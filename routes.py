@@ -143,20 +143,19 @@ def home():
         return redirect(url_for('see_books'))
     return render_template('home.html', form=form)
 
-
-@app.route('/base', methods=["GET", "POST"])  # change
-def base():
-    form = NameForm()  # User should be able to enter name after name and each one will be saved, even if it's a duplicate! Sends data with GET
+@app.route('/names',methods=["GET","POST"])
+def names():
+    form = NameForm()
     if form.validate_on_submit():
         name = form.name.data
-        newname = Name(name)
-        db.session.add(newname)
+        full_name = Name(name=name)
+        db.session.add(full_name)
         db.session.commit()
         return redirect(url_for('all_names'))
-    return render_template('base.html', form=form)
+    return render_template('base.html',form=form)
 
 
-@app.route('/names')
+@app.route('/all_names')
 def all_names():
     names = Name.query.all()
     return render_template('name_example.html', names=names)
