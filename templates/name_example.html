@@ -1,0 +1,22 @@
+<div>
+    <p>------------</p>
+    <h3>Navigation</h3>
+    <ul>
+        <li><a href="{{ url_for('home')}}">Go to book input form.</a></li>
+        <li><a href="{{ url_for('base')}}">Name Form</a></li>
+        <li><a href="{{ url_for('see_all_authors')}}">See all authors.</a></li>
+        <li><a href="{{ url_for('see_all_books')}}">See all books.</a></li>
+        <li><a href="{{ url_for('all_names')}}">See all names.</a></li>
+    </ul>
+</div>
+
+{% block content1 %}
+
+<h1>Names Visited</h1>
+
+{% for n in names %}
+<p>{{ n }}</p>
+{% endfor %}
+
+
+{% endblock %}

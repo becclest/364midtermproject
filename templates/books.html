@@ -1,0 +1,54 @@
+
+
+<div>
+    <p>------------</p>
+    <h3>Navigation</h3>
+    <ul>
+        <li><a href="{{ url_for('home')}}">Go to book input form.</a></li>
+        <li><a href="{{ url_for('base')}}">Name Form</a></li>
+        <li><a href="{{ url_for('see_all_authors')}}">See all authors.</a></li>
+        <li><a href="{{ url_for('see_all_books')}}">See all books.</a></li>
+        <li><a href="{{ url_for('all_names')}}">See all names.</a></li>
+    </ul>
+</div>
+
+
+{% block stuff %}
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<h2>All Bestselling Books</h2>
+{% for each in bestselling_books %}
+<table>
+    <tr>
+        <th>
+            Author
+        </th>
+        <th>Title</th>
+    </tr>
+    <tr>
+        <td>
+            {{ each[1] }}
+        </td>
+        <td>{{ each[0] }}</td>
+    </tr>
+</table>
+
+{% endfor %}
+{% endblock %}
